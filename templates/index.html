@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Heart Health Prediction</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>❤️ Heart Health Prediction</h1>
+    <form action="/predict" method="post">
+      <label>Age:</label>
+      <input type="number" name="age" required>
+
+      <label>Gender:</label>
+      <select name="gender" required>
+        <option value="0">Female</option>
+        <option value="1">Male</option>
+      </select>
+
+      <label>Height (cm):</label>
+      <input type="number" step="0.1" name="height" required>
+
+      <label>Weight (kg):</label>
+      <input type="number" step="0.1" name="weight" required>
+
+      <label>Cholesterol (mg/dL):</label>
+      <input type="number" step="0.1" name="cholesterol" required>
+
+      <label>Glucose (mg/dL):</label>
+      <input type="number" step="0.1" name="glucose" required>
+
+      <label>Smoker:</label>
+      <select name="smoker" required>
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select>
+
+      <label>Exercise (hours/week):</label>
+      <input type="number" step="0.1" name="exercise" required>
+
+      <label>Systolic BP:</label>
+      <input type="number" step="0.1" name="systolic" required>
+
+      <label>Diastolic BP:</label>
+      <input type="number" step="0.1" name="diastolic" required>
+
+      <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction_text %}
+      <div class="result">{{ prediction_text }}</div>
+    {% endif %}
+  </div>
+</body>
+</html>
